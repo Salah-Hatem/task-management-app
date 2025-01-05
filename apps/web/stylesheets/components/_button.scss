@@ -15,6 +15,10 @@
   font-size: 16px;
   font-weight: 500;
   transition: background-color 0.3s ease;
+  a {
+    color: abstracts.$light-grey;
+    text-decoration: none;
+  }
 
   &:hover {
     background-color: color.scale(abstracts.$brand-color, $lightness: -10%);

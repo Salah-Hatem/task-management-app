@@ -26,6 +26,11 @@ html {
   box-sizing: inherit;
   margin: 0;
 }
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 /**
  * Basic styles for links
