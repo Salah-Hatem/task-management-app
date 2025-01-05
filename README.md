@@ -7,6 +7,7 @@ This project uses the following technologies:
 - **Prisma**: 6 (with MongoDB@latest)
 - **Sass**: 1.83
 - **TypeScript**: 5.5.4
+- **Zod**: 3.24
 
 ## Development Environment Setup
 
@@ -32,7 +33,8 @@ Ensure you have the following installed:
 ### Backend Setup
 
 1. Configure environment variables:
-    Create a [.env](http://_vscodecontentref_/0) file in the directory and add the following variables:
+   in the /api directory
+    Create a [.env] file in the directory and add the following variables:
     ```env
     JWT_SECRET=<your-session-secret>
     MONGO_DB_CONNECTION_STRING=mongodb+srv://<db_username>:<db_password>@HOST:PORT/<app-name>
@@ -42,12 +44,12 @@ Ensure you have the following installed:
     ```
     Note: To enable LinkedIn scraping, add your LinkedIn credentials (LINKEDIN_USERNAME and LINKEDIN_PASSWORD) to the backend .env file.
 
-2. Generate a JWT secret: (OR use any string for development)
+3. Generate a JWT secret: (OR use any string for development)
     ```sh
     openssl rand -base64 32
     ```
 
-3. Prepare Prisma:
+4. Prepare Prisma:
     ```sh
     npx prisma generate
     npx prisma db push
@@ -61,12 +63,7 @@ Ensure you have the following installed:
 
 ### Frontend Setup
 
-1. Navigate to the frontend directory:
-    ```sh
-    cd <repository-directory>/apps/web
-    ```
-
-2. Create a [.env](http://_vscodecontentref_/1) file and provide the secrets as shown in the `.env.example`:
+1. In the /web directory create a [.env] file and provide the secrets as shown in the `.env.example`:
     ```env
     BACKEND_URL=http://localhost:8000
     SESSION_SECRET=<your-session-secret>
