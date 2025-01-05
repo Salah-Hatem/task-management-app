@@ -55,7 +55,7 @@ Ensure you have the following installed:
 
     Note: Prisma requires the MongoDB connection string to be in the following format:
     ```env
-    mongodb+srv://<db_username>:<db_password>HOST:PORT/<app-name>
+    mongodb+srv://<db_username>:<db_password>@HOST:PORT/<app-name>
     ```
     For more details, refer to the [Prisma documentation](https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/mongodb/connect-your-database-typescript-mongodb).
 
