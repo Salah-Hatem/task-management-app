@@ -1,6 +1,5 @@
 import {
   ConflictException,
-  Inject,
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
@@ -9,7 +8,6 @@ import { verify } from 'argon2';
 import { AuthJwtPayload } from 'src/types/auth-jwtpayload';
 import { JwtService } from '@nestjs/jwt';
 import { Prisma } from '@prisma/client';
-import { ConfigType } from '@nestjs/config';
 
 @Injectable()
 export class AuthService {

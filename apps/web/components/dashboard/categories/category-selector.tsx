@@ -14,7 +14,6 @@ const CategorySelector = ({
   onChange,
 }: Props) => {
   const [selectedCategory, setSelectedCategory] = useState(selectedCategoryId)
-  console.log(selectedCategory)
 
   const handleCategoryChange = (
     event: React.ChangeEvent<HTMLSelectElement>
@@ -33,7 +32,7 @@ const CategorySelector = ({
       value={selectedCategory || ""}
       onChange={handleCategoryChange}
     >
-      <option value="">All Tasks</option>
+      <option value="">Select Catgegory</option>
       {categories &&
         categories.map((category) => {
           return (

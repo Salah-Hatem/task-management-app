@@ -25,14 +25,14 @@ const UpdateCategoryDialog = ({ categoryId, categoryName }: Props) => {
           <Dialog.Description className=""></Dialog.Description>
 
           <form className="create-category-form" action={action}>
-            <label className="" htmlFor="title">
+            <label className="" htmlFor="name">
               Category Name
             </label>
             <input
               required
               className=""
-              name="title"
-              id="title"
+              name="name"
+              id="name"
               placeholder="Category Name"
               value={categoryNameState}
               onChange={(e) => setCategoryName(e.target.value)}

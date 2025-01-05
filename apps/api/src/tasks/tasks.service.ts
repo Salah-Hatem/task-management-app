@@ -51,8 +51,6 @@ export class TasksService {
   }
 
   async toggleTask(id: string, userId: string) {
-    console.log('toggleTask');
-
     const task = await this.prisma.task.findUnique({
       where: {
         id,

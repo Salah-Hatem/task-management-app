@@ -16,6 +16,7 @@ export type AuthFormState =
         name?: string[]
         email?: string[]
         password?: string[]
+        linkedinUrl?: string[]
       }
     }
   | undefined
@@ -34,8 +35,10 @@ export const SignupFormSchema = z.object({
     .trim(),
   linkedinUrl: z
     .string()
-    .url({ message: "Please enter a valid URL" })
-    .optional()
+    .refine(
+      (url) => !url || (typeof url === "string" && url.startsWith("http")),
+      { message: "Please enter a valid URL" }
+    )
     .refine((url) => !url || url.includes("linkedin.com/in/"), {
       message:
         "Please enter a valid LinkedIn profile URL (e.g., https://www.linkedin.com/in/username)",

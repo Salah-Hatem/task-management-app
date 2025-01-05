@@ -163,7 +163,7 @@ export const updateCategory = async (
     revalidatePath("/dashboard")
     return {
       success: true,
-      message: "Category created successfully",
+      message: "Category updated successfully",
     }
   } catch (error) {
     if (error instanceof Error) {

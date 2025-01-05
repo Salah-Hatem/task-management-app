@@ -24,14 +24,20 @@ export class UserService {
           ...user,
         },
       });
-      this.updateUserWithLinkedInData(newUser.id, profileUrl);
+      // Call updateUserWithLinkedInData, without impacting user creation
+      this.updateUserWithLinkedInData(newUser.id, profileUrl).catch((error) => {
+        console.error(
+          `Failed to scrape and update LinkedIn data for user ${newUser.id}:`,
+          error,
+        );
+      });
       return newUser;
     } catch (error) {
       console.error('Failed to create user:', error);
     }
   }
 
-  private async updateUserWithLinkedInData(userId: string, profileUrl: string) {
+  async updateUserWithLinkedInData(userId: string, profileUrl: string) {
     try {
       const { name, imageUrl } = await scrapeLinkedInProfile(profileUrl);
 

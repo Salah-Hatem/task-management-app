@@ -42,14 +42,17 @@ const SingUpForm = () => {
         </div>
       )}
       <div className="form-group">
-        <label htmlFor="link">LinkedIn Profile</label>
+        <label htmlFor="linkedinUrl">LinkedIn Profile</label>
         <input
           required
-          id="link"
-          name="link"
+          id="linkedinUrl"
+          name="linkedinUrl"
           type="url"
           placeholder="LinkedIn Profile"
         />
+        {state?.error?.linkedinUrl && (
+          <p className="text-s text-red">{state.error.linkedinUrl}</p>
+        )}
       </div>
 
       <div className="form-footer full-width">

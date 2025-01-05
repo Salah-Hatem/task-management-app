@@ -20,13 +20,10 @@ export async function encrypt(payload: SessionPayload) {
 }
 
 export async function decrypt(cookie: string | undefined = "") {
-  // console.log("Decrypting session", cookie)
-
   try {
     const result = await jwtVerify(cookie, encodedKey, {
       algorithms: ["HS256"],
     })
-    // console.log(result.payload)
 
     return result.payload as SessionPayload
   } catch (error) {

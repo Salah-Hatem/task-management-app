@@ -8,7 +8,6 @@ import {
   SignupFormSchema,
 } from "../types/formStateType"
 import { createSession, deleteSession } from "./sessions"
-import { error } from "console"
 
 export async function signUp(
   previousState: AuthFormState,
@@ -16,7 +15,6 @@ export async function signUp(
 ): Promise<AuthFormState> {
   const formDataObject = Object.fromEntries(formData.entries())
   const validationResult = SignupFormSchema.safeParse(formDataObject)
-
   if (!validationResult.success) {
     return {
       success: false,
@@ -31,6 +29,7 @@ export async function signUp(
     password: validationResult.data.password,
     linkedinUrl: validationResult.data.linkedinUrl,
   }
+  let redirectUrl: string | null = null
 
   try {
     // Submit the form data to the server and return the response
@@ -42,7 +41,7 @@ export async function signUp(
       },
     })
     if (response.ok) {
-      redirect("/signin")
+      redirectUrl = "/signin"
     } else {
       return {
         success: false,
@@ -55,6 +54,10 @@ export async function signUp(
   } catch (error) {
     console.error("Failed to sign up", error)
     return { success: false, message: "Failed to sign up" }
+  } finally {
+    if (redirectUrl) {
+      redirect(redirectUrl)
+    }
   }
 }
 

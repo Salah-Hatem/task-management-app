@@ -39,8 +39,8 @@ const CreateTaskDialog = ({ categories }: Props) => {
               rows={5}
             />
 
-            <label htmlFor="due-date">Due Date</label>
-            <input type="date" name="due-date" id="due-date" />
+            <label htmlFor="dueDate">Due Date</label>
+            <input type="date" name="dueDate" id="dueDate" />
             <button disabled={isPending} type="submit" className="btn-primary">
               {isPending ? "Loading..." : "Add Task"}
             </button>
