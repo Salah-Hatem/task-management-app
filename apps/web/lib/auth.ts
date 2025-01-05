@@ -3,23 +3,25 @@
 import { redirect } from "next/navigation"
 import { BackendUrl } from "./contants"
 import {
-  FormState,
+  AuthFormState,
   LoginFormSchema,
   SignupFormSchema,
 } from "../types/formStateType"
 import { createSession, deleteSession } from "./sessions"
+import { error } from "console"
 
 export async function signUp(
-  previousState: FormState,
+  previousState: AuthFormState,
   formData: FormData
-): Promise<FormState> {
+): Promise<AuthFormState> {
   const formDataObject = Object.fromEntries(formData.entries())
   const validationResult = SignupFormSchema.safeParse(formDataObject)
 
   if (!validationResult.success) {
     return {
       success: false,
-      message: validationResult.error.errors[0]?.message || "Invalid data",
+      message: "Invalid data",
+      error: validationResult.error.flatten().fieldErrors,
     }
   }
 
@@ -57,17 +59,17 @@ export async function signUp(
 }
 
 export async function signin(
-  state: FormState,
-  FormData: FormData,
-  req: Request
-): Promise<FormState> {
+  previousState: AuthFormState,
+  FormData: FormData
+): Promise<AuthFormState> {
   const formDataObject = Object.fromEntries(FormData.entries())
   const validation = LoginFormSchema.safeParse(formDataObject)
 
   if (!validation.success) {
     return {
       success: false,
-      message: validation.error.errors[0]?.message || "Invalid data",
+      message: "Invalid data",
+      error: validation.error.flatten().fieldErrors,
     }
   }
   // redirect can't be used in try-catch block

@@ -31,7 +31,7 @@ const SingUpForm = () => {
       </div>
       {state?.error?.password && (
         <div>
-          <p className="text-s">Password must:</p>
+          <p className="">Password must:</p>
           <ul>
             {state.error.password.map((error) => (
               <li key={error} className="text-s text-red">

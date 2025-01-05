@@ -8,6 +8,18 @@ export type FormState =
     }
   | undefined
 
+export type AuthFormState =
+  | {
+      success: boolean
+      message?: string
+      error?: {
+        name?: string[]
+        email?: string[]
+        password?: string[]
+      }
+    }
+  | undefined
+
 export const SignupFormSchema = z.object({
   name: z
     .string()
