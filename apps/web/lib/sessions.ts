@@ -28,7 +28,6 @@ export async function decrypt(cookie: string | undefined = "") {
     return result.payload as SessionPayload
   } catch (error) {
     console.log("Failed to verify session")
-    // redirect("/signin")
     return null
   }
 }

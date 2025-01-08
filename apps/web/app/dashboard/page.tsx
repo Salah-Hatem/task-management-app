@@ -4,7 +4,7 @@ import { getCategories } from "../../data-access/categories"
 import DashboardPageContent from "../../components/dashboard/dashboard-content"
 
 type DashboardPageProps = {
-  searchParams: { [key: string]: string | string[] | undefined }
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 const DashboardPage = async ({ searchParams }: DashboardPageProps) => {
   const { page } = await searchParams

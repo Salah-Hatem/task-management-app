@@ -1,14 +1,14 @@
 "use client"
 import { useActionState } from "react"
 import { FaWindowClose } from "react-icons/fa"
-import { CategoryResult } from "../../data-access/categories"
+import { FormState } from "../../types/formStateType"
 
 type Props = {
   itemId: string
   formAction: (
-    previousState: CategoryResult,
+    previousState: FormState,
     formData: FormData
-  ) => Promise<CategoryResult>
+  ) => Promise<FormState>
 }
 
 const DeleteButton = ({ itemId, formAction }: Props) => {

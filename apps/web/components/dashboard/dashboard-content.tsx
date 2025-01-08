@@ -18,8 +18,6 @@ const DashboardPageContent = ({
   allTasks,
   categories,
 }: DashboardPageContentProps) => {
-  console.log("user", user)
-
   const [filteredTasks, setFilteredTasks] = useState(allTasks)
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
 
